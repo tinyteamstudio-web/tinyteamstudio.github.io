@@ -106,18 +106,30 @@
     </ul>
   </section>
 
-  <hr>
+   <hr> 
+<!-- Contact Section -->
+<section id="contact">
+  <h2 style="color:#A7C7E7;">Let's Connect</h2>
+  <p>Have a project or collaboration in mind? Send us a quick message below 👇</p>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2 style="color:#A7C7E7;">Let's Connect</h2>
-    <p>Have a project or collaboration in mind?</p>
-    <p>Reach out to us directly via email below:</p>
-    <a href="mailto:smallsteps@tinyteamstudio.online" class="btn">Email Luzien</a>
-    <p style="margin-top:20px;">Or visit our website anytime:<br>
-      <a href="https://tinyteamstudio.online" style="color:#A7C7E7; text-decoration:none;">tinyteamstudio.online</a>
-    </p>
-  </section>
+  <form action="https://formsubmit.co/smallsteps@tinyteamstudio.online" method="POST" style="max-width:500px;margin:20px auto;text-align:left;">
+    <label for="name">Name</label><br>
+    <input type="text" name="name" id="name" required style="width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:6px;"><br>
+
+    <label for="email">Email</label><br>
+    <input type="email" name="_replyto" id="email" required style="width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:6px;"><br>
+
+    <label for="message">Message</label><br>
+    <textarea name="message" id="message" rows="5" required style="width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:6px;"></textarea><br>
+
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://tinyteamstudio.online/thankyou.html">
+
+    <button type="submit" style="background-color:#A7C7E7;color:#fff;padding:12px 24px;border:none;border-radius:6px;font-weight:600;cursor:pointer;">Send Message</button>
+  </form>
+
+  <p style="margin-top:20px;text-align:center;">or email us directly at <a href="mailto:smallsteps@tinyteamstudio.online" style="color:#A7C7E7;">smallsteps@tinyteamstudio.online</a></p>
+</section>
 
 
   <footer>
