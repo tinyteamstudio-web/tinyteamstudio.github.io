@@ -10,8 +10,11 @@
       font-family: 'Poppins', sans-serif;
       background-color: #F9F6EE;
       color: #333;
+      line-height: 1.6;
+    }
+    header {
       text-align: center;
-      padding: 80px 20px;
+      padding: 80px 20px 40px;
     }
     h1 {
       color: #A7C7E7;
@@ -22,6 +25,12 @@
       color: #BDBDBD;
       font-weight: 400;
       margin-top: 0;
+    }
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      text-align: center;
     }
     .btn {
       display: inline-block;
@@ -38,18 +47,75 @@
       background-color: #8ab1d1;
     }
     footer {
-      margin-top: 50px;
+      text-align: center;
+      padding: 40px 10px;
       color: #BDBDBD;
       font-size: 0.9em;
     }
+    hr {
+      border: 0;
+      height: 1px;
+      background: #e0e0e0;
+      margin: 50px 0;
+    }
   </style>
 </head>
+
 <body>
-  <h1>Tiny Team Studio</h1>
-  <h2>Tiny team. Big results.</h2>
-  <p>A small creative studio with global digital impact.</p>
-  <p>Founded by <strong>Luzien Joseph</strong></p>
-  <a href="mailto:smallsteps@tinyteamstudio.online" class="btn">Contact Us</a>
-  <footer>© 2025 Tiny Team Studio | Designed by Luzien Joseph</footer>
+  <!-- Header Section -->
+  <header>
+    <h1>Tiny Team Studio</h1>
+    <h2>Tiny team. Big results.</h2>
+    <p>A small creative studio with global digital impact.</p>
+    <p>Founded by <strong>Luzien Joseph</strong></p>
+    <a href="mailto:smallsteps@tinyteamstudio.online" class="btn">Contact Us</a>
+  </header>
+
+  <hr>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2 style="color:#A7C7E7;">About Tiny Team Studio</h2>
+    <p>
+      Tiny Team Studio was created with one goal in mind — to help small teams and entrepreneurs build
+      systems that scale globally without the stress of managing big operations.
+    </p>
+    <p>
+      Led by <strong>Luzien Joseph</strong>, we focus on combining clean design, automation, and smart digital
+      workflows that simplify business growth. Our approach is minimal, effective, and globally ready.
+    </p>
+  </section>
+
+  <hr>
+
+  <!-- Services Section -->
+  <section id="services">
+    <h2 style="color:#A7C7E7;">Our Services</h2>
+    <p>We specialize in modern digital solutions that help you scale smart:</p>
+    <ul style="list-style:none; padding:0; font-size:1.1em; color:#555;">
+      <li>✨ Funnel Design & Automation</li>
+      <li>🎨 Brand & Digital Identity Systems</li>
+      <li>⚙️ Workflow Optimization for Small Teams</li>
+      <li>📊 Analytics Dashboards & Reporting</li>
+      <li>📚 Digital Products & Membership Systems</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 style="color:#A7C7E7;">Let's Connect</h2>
+    <p>Have a project or collaboration in mind?</p>
+    <p>Reach out to us directly via email below:</p>
+    <a href="mailto:smallsteps@tinyteamstudio.online" class="btn">Email Luzien</a>
+    <p style="margin-top:20px;">Or visit our website anytime:<br>
+      <a href="https://tinyteamstudio.online" style="color:#A7C7E7; text-decoration:none;">tinyteamstudio.online</a>
+    </p>
+  </section>
+
+  <footer>
+    © 2025 Tiny Team Studio | Designed by Luzien Joseph
+  </footer>
 </body>
 </html>
