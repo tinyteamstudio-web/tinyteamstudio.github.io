@@ -1,141 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tiny Team Studio | Luzien Joseph</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #F9F6EE;
-      color: #333;
-      line-height: 1.6;
-    }
-    header {
-      text-align: center;
-      padding: 80px 20px 40px;
-    }
-    h1 {
-      color: #A7C7E7;
-      font-size: 3em;
-      margin-bottom: 10px;
-    }
-    h2 {
-      color: #BDBDBD;
-      font-weight: 400;
-      margin-top: 0;
-    }
-    section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 12px 24px;
-      background-color: #A7C7E7;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background-color: #8ab1d1;
-    }
-    footer {
-      text-align: center;
-      padding: 40px 10px;
-      color: #BDBDBD;
-      font-size: 0.9em;
-    }
-    hr {
-      border: 0;
-      height: 1px;
-      background: #e0e0e0;
-      margin: 50px 0;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tiny Team Studio | Luzien Joseph</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#A7C7E7;
+    --cream:#F9F6EE;
+    --soft:#BDBDBD;
+    --text:#333;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:var(--cream);
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  /* Blob background */
+  .bg {
+    position:fixed; inset:0; z-index:-2; overflow:hidden;
+    background: linear-gradient(135deg,#F9F6EE 0%, #F7FBFF 100%);
+  }
+  .blob{
+    position:absolute;
+    filter: blur(40px);
+    opacity:0.85;
+    mix-blend-mode: normal;
+    animation: drift 14s ease-in-out infinite;
+    transform-origin:center;
+  }
+  .blob.a{width:520px;height:420px;background:linear-gradient(120deg,#A7C7E7 0%, #DCC29E 60%); top:-60px; left:-100px; animation-delay:0s;}
+  .blob.b{width:420px;height:360px;background:linear-gradient(120deg,#C6F0E1 0%, #A7C7E7 60%); bottom:-80px; right:-120px; animation-delay:3s;}
+  .blob.c{width:360px;height:300px;background:linear-gradient(120deg,#F2D4E6 0%, #A7C7E7 60%); top:10%; right:10%; animation-delay:6s;}
+
+  @keyframes drift{
+    0%{ transform: translateY(0) scale(1) rotate(0deg); }
+    50%{ transform: translateY(-30px) scale(1.03) rotate(6deg); }
+    100%{ transform: translateY(0) scale(1) rotate(0deg); }
+  }
+
+  /* Page layout */
+  header{
+    padding:56px 20px 24px;
+    text-align:center;
+    position:relative;
+  }
+
+  /* floating logo */
+  .logo-wrap{
+    display:inline-block;
+    width:120px;height:120px;
+    border-radius:50%;
+    padding:8px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 8px 30px rgba(167,199,231,0.15);
+    transform: translateY(0);
+    animation: floatLogo 6s ease-in-out infinite;
+  }
+  .logo-wrap img{width:100%;height:100%;object-fit:cover;border-radius:50%; display:block; }
+
+  @keyframes floatLogo{
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
+
+  /* gradient glow behind logo */
+  .glow {
+    position:absolute;
+    left:50%; top:64px;
+    transform:translateX(-50%);
+    width:220px;height:220px;border-radius:50%;
+    filter: blur(34px);
+    z-index:-1;
+    background: radial-gradient(circle at 25% 25%, rgba(167,199,231,0.25), rgba(210,185,222,0.15), rgba(198,240,225,0.08));
+    pointer-events:none;
+    animation: glowPulse 4.5s ease-in-out infinite;
+  }
+  @keyframes glowPulse{
+    0%{transform:translateX(-50%) scale(1)}
+    50%{transform:translateX(-50%) scale(1.04)}
+    100%{transform:translateX(-50%) scale(1)}
+  }
+
+  h1{ color:var(--blue); font-size:2.5rem; margin:18px 0 6px; }
+  h2{ color:var(--soft); font-weight:400; margin:0 0 18px; }
+  p.lead{ max-width:900px; margin:0 auto 12px; color:#555; font-size:1.05rem; }
+
+  main{ padding:24px 16px 80px; text-align:center; }
+
+  .btn{ display:inline-block; margin-top:18px; padding:12px 22px; background:var(--blue); color:#fff; text-decoration:none; border-radius:10px; font-weight:600; box-shadow:0 6px 18px rgba(0,0,0,0.06); transition:transform .18s, background .18s; }
+  .btn:hover{ transform:translateY(-3px); background:#8ab1d1; }
+
+  /* sections */
+  section{ max-width:920px; margin:56px auto; padding:0 20px; text-align:center; }
+
+  ul.services{ list-style:none;padding:0;display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:18px; }
+  .card{ background:#fff;border-radius:12px;padding:18px; box-shadow:0 8px 22px rgba(0,0,0,0.04); text-align:left; transition:transform .2s; }
+  .card h3{ color:var(--blue); margin:0 0 8px; }
+  .card p{ margin:0; color:#555; }
+
+  footer{ padding:40px 16px; color:var(--soft); text-align:center; font-size:0.95rem; }
+
+  /* contact form */
+  form{ text-align:left; background:#fff; padding:20px; border-radius:10px; box-shadow:0 10px 25px rgba(0,0,0,0.06); }
+  input, textarea{ width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #e6e6e6; font-family:inherit; }
+  label{ font-weight:600; font-size:0.92rem; color:#444; }
+
+  /* audio toggle */
+  .audio-toggle{
+    position:fixed; right:18px; bottom:18px; z-index:9999;
+    width:56px; height:56px; border-radius:14px;
+    background:linear-gradient(180deg,#E6F4FF,#D9EEFF);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 20px rgba(167,199,231,0.18);
+    cursor:pointer;
+    transition:transform .15s;
+  }
+  .audio-toggle:hover{ transform:translateY(-4px); }
+  .audio-toggle svg{ width:24px; height:24px; fill:#0c365b; filter: drop-shadow(0 4px 8px rgba(167,199,231,0.35)); }
+
+  /* fade-in */
+  .fade { opacity:0; transform: translateY(8px); animation: fadeIn .8s forwards; }
+  .fade.delay { animation-delay:0.12s; }
+  @keyframes fadeIn { to { opacity:1; transform: translateY(0); } }
+
+  @media (min-width:900px){
+    h1{font-size:3rem;}
+  }
+</style>
 </head>
-
 <body>
-  <!-- Header Section -->
-  <header>
-    <h1>Tiny Team Studio</h1>
-    <h2>Tiny team. Big results.</h2>
-    <p>A small creative studio with global digital impact.</p>
-    <p>Founded by <strong>Luzien Joseph</strong></p>
-    <a href="mailto:smallsteps@tinyteamstudio.online" class="btn">Contact Us</a>
-  </header>
-<p style="margin-top:20px;">
-  <a href="work.html" style="color:#A7C7E7; text-decoration:none; font-weight:600;">
-    → View Our Work
-  </a>
-</p>
 
-  <hr>
+<div class="bg" aria-hidden="true">
+  <div class="blob a"></div>
+  <div class="blob b"></div>
+  <div class="blob c"></div>
+</div>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2 style="color:#A7C7E7;">About Tiny Team Studio</h2>
-    <p>
-      Tiny Team Studio was created with one goal in mind — to help small teams and entrepreneurs build
-      systems that scale globally without the stress of managing big operations.
-    </p>
-    <p>
-      Led by <strong>Luzien Joseph</strong>, we focus on combining clean design, automation, and smart digital
-      workflows that simplify business growth. Our approach is minimal, effective, and globally ready.
-    </p>
-  </section>
+<header>
+  <div class="glow" aria-hidden="true"></div>
 
-  <hr>
+  <div class="logo-wrap fade" style="animation-delay:0.05s;">
+    <img src="logo.png" alt="Tiny Team Studio logo">
+  </div>
 
-  <!-- Services Section -->
-  <section id="services">
-    <h2 style="color:#A7C7E7;">Our Services</h2>
-    <p>We specialize in modern digital solutions that help you scale smart:</p>
-    <ul style="list-style:none; padding:0; font-size:1.1em; color:#555;">
-      <li>✨ Funnel Design & Automation</li>
-      <li>🎨 Brand & Digital Identity Systems</li>
-      <li>⚙️ Workflow Optimization for Small Teams</li>
-      <li>📊 Analytics Dashboards & Reporting</li>
-      <li>📚 Digital Products & Membership Systems</li>
+  <h1 class="fade delay">Tiny Team Studio</h1>
+  <h2 class="fade delay">Tiny team. Big results.</h2>
+  <p class="lead fade delay">A small creative studio with global digital impact. Funnels • Automation • YouTube Systems • Digital Products</p>
+  <a class="btn fade delay" href="#contact">Contact Us</a>
+</header>
+
+<main>
+  <section class="fade" style="animation-delay:0.18s;">
+    <h2 style="color:var(--blue); margin-bottom:14px;">Our Services</h2>
+    <p style="color:#666; margin-bottom:16px;">We combine design, funnels, and automation to help small teams scale with clarity.</p>
+    <ul class="services">
+      <li><div class="card"><h3>Funnel Design & Automation</h3><p>High-converting funnel blueprints and automated systems.</p></div></li>
+      <li><div class="card"><h3>Brand & Digital Identity</h3><p>Minimal, modern identity and visual systems.</p></div></li>
+      <li><div class="card"><h3>Workflow Optimization</h3><p>Save time with clean systems that actually work for small teams.</p></div></li>
+      <li><div class="card"><h3>Faceless YouTube Systems</h3><p>From content workflow to publishing strategy and thumbnail assets.</p></div></li>
     </ul>
   </section>
 
-   <hr> 
-<!-- Contact Section -->
-<section id="contact">
-  <h2 style="color:#A7C7E7;">Let's Connect</h2>
-  <p>Have a project or collaboration in mind? Send us a quick message below 👇</p>
+  <section id="contact" class="fade" style="animation-delay:0.22s;">
+    <h2 style="color:var(--blue); margin-bottom:8px;">Let's Connect</h2>
+    <p style="color:#666; margin-bottom:16px;">Have a project or collaboration in mind? Send a quick message below.</p>
 
-  <form action="https://formsubmit.co/smallsteps@tinyteamstudio.online" method="POST" style="max-width:500px;margin:20px auto;text-align:left;">
-    <label for="name">Name</label><br>
-    <input type="text" name="name" id="name" required style="width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:6px;"><br>
+    <form action="https://formsubmit.co/smallsteps@tinyteamstudio.online" method="POST" style="max-width:620px;margin:0 auto;">
+      <label for="name">Name</label>
+      <input id="name" name="name" required placeholder="Your name">
 
-    <label for="email">Email</label><br>
-    <input type="email" name="_replyto" id="email" required style="width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:6px;"><br>
+      <label for="email">Email</label>
+      <input id="email" name="_replyto" type="email" required placeholder="you@example.com">
 
-    <label for="message">Message</label><br>
-    <textarea name="message" id="message" rows="5" required style="width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:6px;"></textarea><br>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
 
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://tinyteamstudio.online/thankyou.html">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_subject" value="New Inquiry from Tiny Team Studio">
-    
-    <button type="submit" style="background-color:#A7C7E7;color:#fff;padding:12px 24px;border:none;border-radius:6px;font-weight:600;cursor:pointer;">Send Message</button>
-  </form>
+      <!-- clean email layout + redirect -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://tinyteamstudio.online/thankyou.html">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_subject" value="New Inquiry from Tiny Team Studio">
 
-  <p style="margin-top:20px;text-align:center;">or email us directly at <a href="mailto:smallsteps@tinyteamstudio.online" style="color:#A7C7E7;">smallsteps@tinyteamstudio.online</a></p>
-</section>
+      <button type="submit" class="btn" style="width:100%;">Send Message</button>
+    </form>
 
+    <p style="color:#777; margin-top:12px;">Or email directly: <a href="mailto:smallsteps@tinyteamstudio.online" style="color:var(--blue);">smallsteps@tinyteamstudio.online</a></p>
+  </section>
+</main>
 
-  <footer>
-    © 2025 Tiny Team Studio | Designed by Luzien Joseph
-  </footer>
+<footer class="fade" style="animation-delay:0.28s;">
+  © 2025 Tiny Team Studio • Designed by Luzien Joseph
+</footer>
+
+<!-- ambient audio (muted by default) -->
+<audio id="ambient" loop preload="none">
+  <source src="ambient.mp3" type="audio/mpeg">
+</audio>
+
+<!-- audio toggle (baby-blue glow) -->
+<div class="audio-toggle" id="audioToggle" title="Play ambient">
+  <!-- simple sound icon -->
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M3 10v4h4l5 4V6L7 10H3zM16.5 12c0-1.77-.77-3.37-1.98-4.44l-1.42 1.42c.8.66 1.4 1.61 1.4 2.86s-.6 2.2-1.4 2.86l1.42 1.42C15.73 15.37 16.5 13.77 16.5 12z"/>
+  </svg>
+</div>
+
+<script>
+  // fade-in helpers applied on load
+  document.addEventListener('DOMContentLoaded', ()=> {
+    document.querySelectorAll('.fade').forEach(el=>{
+      el.style.animationFillMode='forwards';
+    });
+  });
+
+  // audio toggle behavior with fade
+  const audio = document.getElementById('ambient');
+  const toggle = document.getElementById('audioToggle');
+  let playing = false;
+  // ensure audio is muted by default (browsers block autoplay sound)
+  audio.volume = 0;
+  audio.muted = true;
+
+  function fadeAudio(targetVol, duration=600){
+    const start = audio.volume;
+    const diff = targetVol - start;
+    const startTime = performance.now();
+    function step(now){
+      const t = Math.min(1,(now-startTime)/duration);
+      audio.volume = start + diff * t;
+      if(t<1) requestAnimationFrame(step);
+      else { if(audio.volume===0) audio.pause(); }
+    }
+    if(!audio.paused && targetVol===0){ // fade out
+      requestAnimationFrame(step);
+    } else {
+      if(audio.paused) audio.play().catch(()=>{/* play blocked until user interacts */});
+      requestAnimationFrame(step);
+    }
+  }
+
+  toggle.addEventListener('click', ()=>{
+    if(!playing){
+      audio.muted = false;
+      fadeAudio(0.28,700); // subtle level
+      toggle.title = "Pause ambient";
+      toggle.style.boxShadow = "0 10px 30px rgba(167,199,231,0.28)";
+      playing = true;
+    } else {
+      fadeAudio(0,700);
+      toggle.title = "Play ambient";
+      toggle.style.boxShadow = "0 8px 20px rgba(167,199,231,0.18)";
+      playing = false;
+    }
+  });
+</script>
+
 </body>
 </html>
