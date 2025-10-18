@@ -11,51 +11,92 @@
       background-color: #F9F6EE;
       color: #333;
       line-height: 1.6;
+      overflow-x: hidden;
     }
+
     header {
       text-align: center;
-      padding: 80px 20px 40px;
+      padding: 100px 20px 50px;
     }
+
     h1 {
       color: #A7C7E7;
-      font-size: 2.5em;
+      font-size: 2.7em;
       margin-bottom: 10px;
+      letter-spacing: -0.5px;
+      animation: fadeIn 1.2s ease forwards;
     }
+
     p {
       color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0.9;
     }
+
     .work-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 35px;
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 25px;
     }
+
     .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      padding: 20px;
+      position: relative;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+      padding: 30px 20px;
       text-align: center;
-      transition: 0.3s;
+      backdrop-filter: blur(6px);
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.7s ease;
     }
+
+    .card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     }
+
     .card h3 {
-      color: #A7C7E7;
-      margin-bottom: 10px;
+      color: #93B9E0;
+      margin-bottom: 12px;
+      font-size: 1.2em;
     }
+
     .card p {
       font-size: 0.95em;
       color: #666;
     }
+
+    /* Subtle Hover Overlay */
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(167,199,231,0.05), rgba(167,199,231,0.15));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
     a.btn {
       display: inline-block;
-      margin: 40px auto;
-      padding: 12px 24px;
+      margin: 50px auto 0;
+      padding: 12px 28px;
       background-color: #A7C7E7;
       color: #fff;
       text-decoration: none;
@@ -63,44 +104,48 @@
       font-weight: 600;
       transition: 0.3s;
     }
+
     a.btn:hover {
       background-color: #8ab1d1;
     }
+
     footer {
       text-align: center;
-      padding: 40px 10px;
+      padding: 60px 10px;
       color: #BDBDBD;
       font-size: 0.9em;
-      margin-top: 50px;
+      margin-top: 60px;
+    }
+
+    /* --- Fade Animation --- */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Our Work</h1>
-    <p>Explore a collection of digital systems, designs, and funnels built by Tiny Team Studio.</p>
+    <p>Explore calm, strategic systems designed to make small teams look big — and move smarter.</p>
   </header>
 
   <section class="work-grid">
     <div class="card">
-      <h3>🌐 Funnel System Design</h3>
-      <p>Custom high-converting funnels for service businesses and creatives.</p>
+      <h3>🌐 Funnel Design & Automation</h3>
+      <p>High-converting funnels paired with backend automations that save hours weekly.</p>
     </div>
     <div class="card">
-      <h3>⚙️ Automation Setup</h3>
-      <p>Workflow automations that help small teams save hours every week.</p>
+      <h3>🎨 Brand & Digital Identity</h3>
+      <p>Minimal and modern identity systems for creators and businesses that value simplicity.</p>
     </div>
     <div class="card">
-      <h3>🎥 Faceless YouTube Channels</h3>
-      <p>Full setup of content systems, AI voice, and video publishing structure.</p>
+      <h3>⚙️ Workflow Optimization</h3>
+      <p>Streamlined systems and dashboards designed for focus and function.</p>
     </div>
     <div class="card">
-      <h3>📚 Digital eBook Systems</h3>
-      <p>From design to checkout — we build automated eBook selling systems.</p>
-    </div>
-    <div class="card">
-      <h3>💻 Client Dashboards</h3>
-      <p>Custom Google-based dashboards for accounting, rentals, and analytics.</p>
+      <h3>🎥 Faceless YouTube Systems</h3>
+      <p>Complete faceless YouTube content systems — from script to upload automation.</p>
     </div>
   </section>
 
@@ -109,7 +154,20 @@
   </div>
 
   <footer>
-    © 2025 Tiny Team Studio | Designed by Luzien Joseph
+    © 2025 Tiny Team Studio | Crafted with calm precision 💙
   </footer>
+
+  <script>
+    // Smooth scroll reveal for cards
+    const cards = document.querySelectorAll('.card');
+    const revealCards = () => {
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) card.classList.add('visible');
+      });
+    };
+    window.addEventListener('scroll', revealCards);
+    revealCards();
+  </script>
 </body>
 </html>
