@@ -6,59 +6,205 @@
 <title>Thank You | Tiny Team Studio</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{ --blue:#A7C7E7; --cream:#F9F6EE; --text:#333; --soft:#BDBDBD }
+  :root{
+    --blue:#A7C7E7;
+    --cream:#F9F6EE;
+    --soft:#BDBDBD;
+    --text:#333;
+  }
   *{box-sizing:border-box}
-  body{ margin:0; font-family:'Poppins',sans-serif; background:var(--cream); color:var(--text); min-height:100vh; }
-  .bg{ position:fixed; inset:0; z-index:-2; overflow:hidden; background: linear-gradient(135deg,#F9F6EE 0%, #F7FBFF 100%); }
-  .blob{ position:absolute; filter: blur(40px); opacity:0.85; animation: drift 14s ease-in-out infinite; }
-  .blob.a{width:520px;height:420px;background:linear-gradient(120deg,#A7C7E7,#DCC29E); top:-60px; left:-100px; animation-delay:0s;}
-  .blob.b{width:420px;height:360px;background:linear-gradient(120deg,#C6F0E1,#A7C7E7); bottom:-80px; right:-120px; animation-delay:3s;}
-  .blob.c{width:360px;height:300px;background:linear-gradient(120deg,#F2D4E6,#A7C7E7); top:10%; right:10%; animation-delay:6s;}
-  @keyframes drift{0%{transform:translateY(0)}50%{transform:translateY(-30px)}100%{transform:translateY(0)}}
-  .wrap{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding:32px; text-align:center; }
-  .card{ background:#fff; padding:42px 36px; border-radius:18px; box-shadow:0 14px 40px rgba(0,0,0,0.06); max-width:760px; width:100%; position:relative; overflow:visible; }
-  .logo-wrap{ width:120px;height:120px;border-radius:50%; margin:0 auto; padding:8px; background:rgba(255,255,255,0.6); box-shadow:0 10px 30px rgba(167,199,231,0.12); transform:translateY(-60px); }
-  .logo-wrap img{ width:100%;height:100%;border-radius:50%; display:block; }
-  h1{ color:var(--blue); font-size:2.1rem; margin:0 0 12px; }
-  p{ color:#666; font-size:1.05rem; margin:0 0 18px; }
-  a.btn{ display:inline-block; padding:12px 20px; background:var(--blue); color:#fff; border-radius:10px; text-decoration:none; font-weight:600; box-shadow:0 8px 22px rgba(0,0,0,0.06); }
-  @media(min-width:800px){ h1{font-size:2.4rem} .card{padding:56px 48px} }
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:var(--cream);
+    color:var(--text);
+    min-height:100vh;
+    overflow:hidden;
+    text-align:center;
+  }
+
+  /* Blob background */
+  .bg {
+    position:fixed; inset:0; z-index:-2; overflow:hidden;
+    background: linear-gradient(135deg,#F9F6EE 0%, #F7FBFF 100%);
+  }
+  .blob{
+    position:absolute;
+    filter: blur(40px);
+    opacity:0.85;
+    mix-blend-mode: normal;
+    animation: drift 14s ease-in-out infinite;
+  }
+  .blob.a{width:520px;height:420px;background:linear-gradient(120deg,#A7C7E7 0%, #DCC29E 60%); top:-60px; left:-100px; animation-delay:0s;}
+  .blob.b{width:420px;height:360px;background:linear-gradient(120deg,#C6F0E1 0%, #A7C7E7 60%); bottom:-80px; right:-120px; animation-delay:3s;}
+  .blob.c{width:360px;height:300px;background:linear-gradient(120deg,#F2D4E6 0%, #A7C7E7 60%); top:10%; right:10%; animation-delay:6s;}
+
+  @keyframes drift{
+    0%{ transform: translateY(0) scale(1) rotate(0deg); }
+    50%{ transform: translateY(-30px) scale(1.03) rotate(6deg); }
+    100%{ transform: translateY(0) scale(1) rotate(0deg); }
+  }
+
+  /* floating logo with glow */
+  .logo-wrap{
+    display:inline-block;
+    width:120px;height:120px;
+    border-radius:50%;
+    padding:8px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 25px rgba(167,199,231,0.4),
+                0 0 55px rgba(198,240,225,0.25);
+    transform: translateY(0);
+    animation: floatLogo 6s ease-in-out infinite;
+    position: relative;
+    margin-top:80px;
+  }
+  .logo-wrap::after{
+    content:"";
+    position:absolute;
+    inset:-8px;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(167,199,231,0.6), transparent 70%);
+    filter: blur(12px);
+    z-index:-1;
+    animation: glowSoft 3s ease-in-out infinite alternate;
+  }
+  .logo-wrap img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    border:2px solid rgba(255,255,255,0.8);
+  }
+  @keyframes floatLogo{
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
+  @keyframes glowSoft{
+    from { opacity:0.7; transform:scale(1); }
+    to { opacity:1; transform:scale(1.08); }
+  }
+
+  /* fade-in */
+  .fade { opacity:0; transform: translateY(8px); animation: fadeIn 1s forwards; }
+  .fade.delay { animation-delay:0.15s; }
+  @keyframes fadeIn { to { opacity:1; transform: translateY(0); } }
+
+  h1{ color:var(--blue); font-size:2.2rem; margin-top:40px; margin-bottom:10px;}
+  p{ color:#555; font-size:1.05rem; margin-bottom:30px; }
+
+  a.btn{
+    display:inline-block;
+    padding:12px 24px;
+    background:var(--blue);
+    color:#fff;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:600;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    transition:transform .18s, background .18s;
+  }
+  a.btn:hover{ transform:translateY(-3px); background:#8ab1d1; }
+
+  footer{ color:var(--soft); font-size:0.9rem; margin-top:60px; }
+
+  /* audio toggle */
+  .audio-toggle{
+    position:fixed; right:18px; bottom:18px; z-index:9999;
+    width:56px; height:56px; border-radius:14px;
+    background:linear-gradient(180deg,#E6F4FF,#D9EEFF);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 20px rgba(167,199,231,0.18);
+    cursor:pointer;
+    transition:transform .15s;
+  }
+  .audio-toggle:hover{ transform:translateY(-4px); }
+  .audio-toggle svg{ width:24px; height:24px; fill:#0c365b; filter: drop-shadow(0 4px 8px rgba(167,199,231,0.35)); }
+
 </style>
 </head>
 <body>
-  <div class="bg" aria-hidden="true">
-    <div class="blob a"></div>
-    <div class="blob b"></div>
-    <div class="blob c"></div>
-  </div>
 
-  <div class="wrap">
-    <div class="card" role="main">
-      <div class="logo-wrap" aria-hidden="true">
-        <img src="logo.png" alt="Tiny Team Studio logo">
-      </div>
+<div class="bg" aria-hidden="true">
+  <div class="blob a"></div>
+  <div class="blob b"></div>
+  <div class="blob c"></div>
+</div>
 
-      <h1>Thank you — message received! 💙</h1>
-      <p>We got your message and the Tiny Team will be in touch shortly. If you need us faster, email: <a href="mailto:smallsteps@tinyteamstudio.online" style="color:var(--blue);">smallsteps@tinyteamstudio.online</a></p>
-      <p><a class="btn" href="index.html">← Back to Home</a></p>
-    </div>
-  </div>
+<!-- Glowing Floating Logo -->
+<div class="logo-wrap fade" style="animation-delay:0.05s;">
+  <img src="logo.png" alt="Tiny Team Studio logo">
+</div>
 
-  <!-- ambient audio (optional) -->
-  <audio id="ambient2" loop preload="none">
-    <source src="ambient.mp3" type="audio/mpeg">
-  </audio>
+<!-- Thank You Text -->
+<h1 class="fade delay">Your ideas just landed at Tiny Team Studio 🌍</h1>
+<p class="fade delay">We’ll reply soon — thank you for trusting our tiny team with your big ideas 💙</p>
+<a class="btn fade delay" href="index.html">← Back to Home</a>
 
-  <script>
-    // optional autoplay only when user previously toggled on main page — browsers block cross-page autoplay;
-    // we keep audio muted and let user toggle on the main page. If they come here directly, it stays paused.
-    const audio2 = document.getElementById('ambient2');
-    audio2.volume = 0;
-    audio2.muted = true;
-    // try to keep playback state consistent if available via sessionStorage
-    try {
-      if(sessionStorage.getItem('tts_playing') === '1'){ audio2.muted = false; audio2.volume = 0.28; audio2.play().catch(()=>{}); }
-    } catch(e){}
-  </script>
+<footer class="fade" style="animation-delay:0.3s;">© 2025 Tiny Team Studio • Designed by Luzien Joseph</footer>
+
+<!-- Ambient Audio -->
+<audio id="ambient2" loop preload="none">
+  <source src="ambient.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Audio Toggle -->
+<div class="audio-toggle" id="audioToggle2" title="Play ambient">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M3 10v4h4l5 4V6L7 10H3zM16.5 12c0-1.77-.77-3.37-1.98-4.44l-1.42 1.42c.8.66 1.4 1.61 1.4 2.86s-.6 2.2-1.4 2.86l1.42 1.42C15.73 15.37 16.5 13.77 16.5 12z"/>
+  </svg>
+</div>
+
+<script>
+  // fade-in
+  document.addEventListener('DOMContentLoaded', ()=> {
+    document.querySelectorAll('.fade').forEach(el=>{
+      el.style.animationFillMode='forwards';
+    });
+  });
+
+  // Audio toggle same as main
+  const audio2 = document.getElementById('ambient2');
+  const toggle2 = document.getElementById('audioToggle2');
+  let playing = false;
+  audio2.volume = 0;
+  audio2.muted = true;
+
+  function fadeAudio2(targetVol, duration=600){
+    const start = audio2.volume;
+    const diff = targetVol - start;
+    const startTime = performance.now();
+    function step(now){
+      const t = Math.min(1,(now-startTime)/duration);
+      audio2.volume = start + diff * t;
+      if(t<1) requestAnimationFrame(step);
+      else { if(audio2.volume===0) audio2.pause(); }
+    }
+    if(!audio2.paused && targetVol===0){
+      requestAnimationFrame(step);
+    } else {
+      if(audio2.paused) audio2.play().catch(()=>{});
+      requestAnimationFrame(step);
+    }
+  }
+
+  toggle2.addEventListener('click', ()=>{
+    if(!playing){
+      audio2.muted = false;
+      fadeAudio2(0.28,700);
+      toggle2.title = "Pause ambient";
+      toggle2.style.boxShadow = "0 10px 30px rgba(167,199,231,0.28)";
+      playing = true;
+    } else {
+      fadeAudio2(0,700);
+      toggle2.title = "Play ambient";
+      toggle2.style.boxShadow = "0 8px 20px rgba(167,199,231,0.18)";
+      playing = false;
+    }
+  });
+</script>
+
 </body>
 </html>
