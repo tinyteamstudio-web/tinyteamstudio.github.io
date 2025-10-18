@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Our Work | Tiny Team Studio</title>
+
   <style>
     body {
       margin: 0;
@@ -24,7 +25,6 @@
       font-size: 2.7em;
       margin-bottom: 10px;
       letter-spacing: -0.5px;
-      animation: fadeIn 1.2s ease forwards;
     }
 
     p {
@@ -44,22 +44,21 @@
     }
 
     .card {
-      position: relative;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255,255,255,0.85);
       border-radius: 14px;
       box-shadow: 0 6px 16px rgba(0,0,0,0.05);
       padding: 30px 20px;
       text-align: center;
       backdrop-filter: blur(6px);
-      transform: translateY(30px);
-      opacity: 0;
-      transition: all 0.7s ease;
+      transition: all 0.5s ease;
       cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
     }
 
     .card.visible {
-      transform: translateY(0);
       opacity: 1;
+      transform: translateY(0);
     }
 
     .card:hover {
@@ -76,21 +75,6 @@
     .card p {
       font-size: 0.95em;
       color: #666;
-    }
-
-    .card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 14px;
-      background: linear-gradient(180deg, rgba(167,199,231,0.05), rgba(167,199,231,0.15));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 0;
-    }
-
-    .card:hover::after {
-      opacity: 1;
     }
 
     a.btn {
@@ -117,23 +101,19 @@
       margin-top: 60px;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ----- Modal (Lightbox) Styles ----- */
+    /* ===== MODAL GALLERY ===== */
     .modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7);
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.4s ease;
-      z-index: 100;
+      z-index: 1000;
+      padding: 20px;
     }
 
     .modal.active {
@@ -144,47 +124,79 @@
     .modal-content {
       background: #fff;
       border-radius: 14px;
-      max-width: 90%;
-      max-height: 80%;
       overflow: hidden;
+      max-width: 90%;
+      max-height: 90%;
+      text-align: center;
+      position: relative;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      animation: fadeUp 0.5s ease;
     }
 
-    @keyframes fadeUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .modal-content img,
-    .modal-content video {
-      display: block;
+    .gallery-image {
+      display: none;
       width: 100%;
       height: auto;
-      object-fit: cover;
     }
 
-    .modal-content video {
-      background: #000;
+    .gallery-image.active {
+      display: block;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .caption {
+      padding: 15px 25px;
+      font-size: 0.95rem;
+      color: #555;
+      background: #f9f9f9;
+      border-top: 1px solid #eee;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .modal-close {
       position: absolute;
-      top: 20px;
-      right: 25px;
+      top: 15px;
+      right: 20px;
       font-size: 1.8rem;
       color: #fff;
       cursor: pointer;
-      z-index: 110;
       transition: 0.3s;
+      z-index: 1010;
     }
 
     .modal-close:hover {
       color: #A7C7E7;
     }
+
+    /* Arrows */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: rgba(255,255,255,0.8);
+      background: rgba(0,0,0,0.3);
+      padding: 10px 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      z-index: 1010;
+    }
+
+    .arrow:hover {
+      background: rgba(167,199,231,0.8);
+      color: #fff;
+    }
+
+    .arrow.left { left: 20px; }
+    .arrow.right { right: 20px; }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Our Work</h1>
     <p>Explore calm, strategic systems designed to make small teams look big — and move smarter.</p>
@@ -217,50 +229,71 @@
     © 2025 Tiny Team Studio | Crafted with calm precision 💙
   </footer>
 
-  <!-- ===== Modals ===== -->
+  <!-- ===== MODALS WITH GALLERIES ===== -->
   <div id="funnelModal" class="modal">
     <span class="modal-close">&times;</span>
+    <div class="arrow left">❮</div>
+    <div class="arrow right">❯</div>
     <div class="modal-content">
-      <img src="samples/funnel1.jpg" alt="Funnel Design Sample">
+      <img src="samples/funnel1.jpg" class="gallery-image active" alt="Funnel sample 1">
+      <img src="samples/funnel2.jpg" class="gallery-image" alt="Funnel sample 2">
+      <img src="samples/funnel3.jpg" class="gallery-image" alt="Funnel sample 3">
+      <div class="caption">A complete funnel setup showcasing automation flow and lead sequence.</div>
     </div>
   </div>
 
   <div id="brandModal" class="modal">
     <span class="modal-close">&times;</span>
+    <div class="arrow left">❮</div>
+    <div class="arrow right">❯</div>
     <div class="modal-content">
-      <img src="samples/brand1.jpg" alt="Brand Identity Sample">
+      <img src="samples/brand1.jpg" class="gallery-image active" alt="Brand sample 1">
+      <img src="samples/brand2.jpg" class="gallery-image" alt="Brand sample 2">
+      <img src="samples/brand3.jpg" class="gallery-image" alt="Brand sample 3">
+      <div class="caption">Clean identity system combining logo, typography, and color harmonies.</div>
     </div>
   </div>
 
   <div id="workflowModal" class="modal">
     <span class="modal-close">&times;</span>
+    <div class="arrow left">❮</div>
+    <div class="arrow right">❯</div>
     <div class="modal-content">
-      <video src="samples/workflow1.mp4" autoplay muted loop></video>
+      <img src="samples/workflow1.jpg" class="gallery-image active" alt="Workflow sample 1">
+      <img src="samples/workflow2.jpg" class="gallery-image" alt="Workflow sample 2">
+      <img src="samples/workflow3.jpg" class="gallery-image" alt="Workflow sample 3">
+      <div class="caption">Workflow dashboard sample demonstrating task automation and reporting.</div>
     </div>
   </div>
 
   <div id="youtubeModal" class="modal">
     <span class="modal-close">&times;</span>
+    <div class="arrow left">❮</div>
+    <div class="arrow right">❯</div>
     <div class="modal-content">
-      <video src="samples/youtube1.mp4" autoplay muted loop></video>
+      <img src="samples/youtube1.jpg" class="gallery-image active" alt="YouTube sample 1">
+      <img src="samples/youtube2.jpg" class="gallery-image" alt="YouTube sample 2">
+      <img src="samples/youtube3.jpg" class="gallery-image" alt="YouTube sample 3">
+      <div class="caption">Faceless YouTube automation showing script, schedule, and upload workflow.</div>
     </div>
   </div>
 
   <script>
-    // Scroll reveal
+    // Reveal Cards
     const cards = document.querySelectorAll('.card');
-    const revealCards = () => {
+    const reveal = () => {
       cards.forEach(card => {
         const rect = card.getBoundingClientRect();
         if (rect.top < window.innerHeight * 0.85) card.classList.add('visible');
       });
     };
-    window.addEventListener('scroll', revealCards);
-    revealCards();
+    window.addEventListener('scroll', reveal);
+    reveal();
 
-    // Modal logic
+    // Modal Functionality
     const modals = document.querySelectorAll('.modal');
-    const closeButtons = document.querySelectorAll('.modal-close');
+    const closeBtns = document.querySelectorAll('.modal-close');
+    const arrows = document.querySelectorAll('.arrow');
 
     document.querySelectorAll('.card').forEach(card => {
       card.addEventListener('click', () => {
@@ -269,21 +302,41 @@
       });
     });
 
-    closeButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        modals.forEach(modal => modal.classList.remove('active'));
+    closeBtns.forEach(btn => btn.addEventListener('click', () => modals.forEach(m => m.classList.remove('active'))));
+    window.addEventListener('click', e => modals.forEach(m => { if (e.target === m) m.classList.remove('active'); }));
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') modals.forEach(m => m.classList.remove('active')); });
+
+    // Gallery navigation
+    arrows.forEach(arrow => {
+      arrow.addEventListener('click', () => {
+        const modal = arrow.closest('.modal');
+        const images = modal.querySelectorAll('.gallery-image');
+        let current = Array.from(images).findIndex(img => img.classList.contains('active'));
+        images[current].classList.remove('active');
+        if (arrow.classList.contains('left')) {
+          current = (current - 1 + images.length) % images.length;
+        } else {
+          current = (current + 1) % images.length;
+        }
+        images[current].classList.add('active');
       });
     });
 
-    window.addEventListener('click', e => {
-      modals.forEach(modal => {
-        if (e.target === modal) modal.classList.remove('active');
-      });
-    });
-
+    // Keyboard arrow navigation
     window.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        modals.forEach(modal => modal.classList.remove('active'));
+      const activeModal = document.querySelector('.modal.active');
+      if (!activeModal) return;
+      const images = activeModal.querySelectorAll('.gallery-image');
+      let current = Array.from(images).findIndex(img => img.classList.contains('active'));
+      if (e.key === 'ArrowLeft') {
+        images[current].classList.remove('active');
+        current = (current - 1 + images.length) % images.length;
+        images[current].classList.add('active');
+      }
+      if (e.key === 'ArrowRight') {
+        images[current].classList.remove('active');
+        current = (current + 1) % images.length;
+        images[current].classList.add('active');
       }
     });
   </script>
