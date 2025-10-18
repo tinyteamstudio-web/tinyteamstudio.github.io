@@ -1,102 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank You | Tiny Team Studio</title>
-  <style>
-    :root {
-      --blue: #A7C7E7;
-      --cream: #F9F6EE;
-      --gray: #666;
-    }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--cream);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-    .container {
-      text-align: center;
-      background: #fff;
-      padding: 50px 40px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      animation: floatIn 0.8s ease-out;
-    }
-    h1 {
-      color: var(--blue);
-      font-size: 2.5em;
-      margin-bottom: 10px;
-      animation: fadeIn 1s ease-in-out;
-    }
-    p {
-      color: var(--gray);
-      font-size: 1.1em;
-      margin-bottom: 30px;
-      line-height: 1.5;
-      animation: fadeIn 1.2s ease-in-out;
-    }
-    a {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: var(--blue);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      animation: fadeIn 1.5s ease-in-out;
-    }
-    a:hover {
-      background-color: #8ab1d1;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 12px rgba(0,0,0,0.1);
-    }
-    .bubble {
-      position: absolute;
-      border-radius: 50%;
-      background-color: var(--blue);
-      opacity: 0.15;
-      animation: float 10s infinite ease-in-out;
-    }
-    .bubble:nth-child(1) { width: 120px; height: 120px; top: 10%; left: 15%; animation-delay: 0s; }
-    .bubble:nth-child(2) { width: 80px; height: 80px; bottom: 20%; right: 10%; animation-delay: 2s; }
-    .bubble:nth-child(3) { width: 150px; height: 150px; bottom: 5%; left: 10%; animation-delay: 4s; }
-    .bubble:nth-child(4) { width: 100px; height: 100px; top: 25%; right: 15%; animation-delay: 1s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); opacity: 0.15; }
-      50% { transform: translateY(-20px); opacity: 0.25; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes floatIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Thank You | Tiny Team Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --blue:#A7C7E7; --cream:#F9F6EE; --text:#333; --soft:#BDBDBD }
+  *{box-sizing:border-box}
+  body{ margin:0; font-family:'Poppins',sans-serif; background:var(--cream); color:var(--text); min-height:100vh; }
+  .bg{ position:fixed; inset:0; z-index:-2; overflow:hidden; background: linear-gradient(135deg,#F9F6EE 0%, #F7FBFF 100%); }
+  .blob{ position:absolute; filter: blur(40px); opacity:0.85; animation: drift 14s ease-in-out infinite; }
+  .blob.a{width:520px;height:420px;background:linear-gradient(120deg,#A7C7E7,#DCC29E); top:-60px; left:-100px; animation-delay:0s;}
+  .blob.b{width:420px;height:360px;background:linear-gradient(120deg,#C6F0E1,#A7C7E7); bottom:-80px; right:-120px; animation-delay:3s;}
+  .blob.c{width:360px;height:300px;background:linear-gradient(120deg,#F2D4E6,#A7C7E7); top:10%; right:10%; animation-delay:6s;}
+  @keyframes drift{0%{transform:translateY(0)}50%{transform:translateY(-30px)}100%{transform:translateY(0)}}
+  .wrap{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding:32px; text-align:center; }
+  .card{ background:#fff; padding:42px 36px; border-radius:18px; box-shadow:0 14px 40px rgba(0,0,0,0.06); max-width:760px; width:100%; position:relative; overflow:visible; }
+  .logo-wrap{ width:120px;height:120px;border-radius:50%; margin:0 auto; padding:8px; background:rgba(255,255,255,0.6); box-shadow:0 10px 30px rgba(167,199,231,0.12); transform:translateY(-60px); }
+  .logo-wrap img{ width:100%;height:100%;border-radius:50%; display:block; }
+  h1{ color:var(--blue); font-size:2.1rem; margin:0 0 12px; }
+  p{ color:#666; font-size:1.05rem; margin:0 0 18px; }
+  a.btn{ display:inline-block; padding:12px 20px; background:var(--blue); color:#fff; border-radius:10px; text-decoration:none; font-weight:600; box-shadow:0 8px 22px rgba(0,0,0,0.06); }
+  @media(min-width:800px){ h1{font-size:2.4rem} .card{padding:56px 48px} }
+</style>
 </head>
 <body>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-
-  <div class="container">
-    <h1>Thank You! 💙</h1>
-    <p>Your message has been sent successfully.<br>
-    The Tiny Team will get back to you soon — we’re so happy to connect!</p>
-    <a href="index.html">← Back to Home</a>
+  <div class="bg" aria-hidden="true">
+    <div class="blob a"></div>
+    <div class="blob b"></div>
+    <div class="blob c"></div>
   </div>
+
+  <div class="wrap">
+    <div class="card" role="main">
+      <div class="logo-wrap" aria-hidden="true">
+        <img src="logo.png" alt="Tiny Team Studio logo">
+      </div>
+
+      <h1>Thank you — message received! 💙</h1>
+      <p>We got your message and the Tiny Team will be in touch shortly. If you need us faster, email: <a href="mailto:smallsteps@tinyteamstudio.online" style="color:var(--blue);">smallsteps@tinyteamstudio.online</a></p>
+      <p><a class="btn" href="index.html">← Back to Home</a></p>
+    </div>
+  </div>
+
+  <!-- ambient audio (optional) -->
+  <audio id="ambient2" loop preload="none">
+    <source src="ambient.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // optional autoplay only when user previously toggled on main page — browsers block cross-page autoplay;
+    // we keep audio muted and let user toggle on the main page. If they come here directly, it stays paused.
+    const audio2 = document.getElementById('ambient2');
+    audio2.volume = 0;
+    audio2.muted = true;
+    // try to keep playback state consistent if available via sessionStorage
+    try {
+      if(sessionStorage.getItem('tts_playing') === '1'){ audio2.muted = false; audio2.volume = 0.28; audio2.play().catch(()=>{}); }
+    } catch(e){}
+  </script>
 </body>
 </html>
