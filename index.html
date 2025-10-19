@@ -13,7 +13,9 @@
     --cream:#F9F6EE;
     --soft:#BDBDBD;
     --text:#333;
+    --brown:#4E342E;
   }
+
   *{box-sizing:border-box}
   body{
     margin:0;
@@ -41,6 +43,7 @@
   .blob.c{width:360px;height:300px;background:linear-gradient(120deg,#F2D4E6 0%, #A7C7E7 60%); top:10%; right:10%; animation-delay:6s;}
   @keyframes drift{0%{transform:translateY(0)scale(1)rotate(0deg);}50%{transform:translateY(-30px)scale(1.03)rotate(6deg);}100%{transform:translateY(0)scale(1)rotate(0deg);}}
 
+
   header{text-align:center;padding:56px 20px 24px;position:relative;}
   .logo-wrap {
     display:inline-block;width:140px;height:140px;border-radius:50%;padding:8px;
@@ -64,30 +67,50 @@
   }
   @keyframes glowPulse{0%{transform:translateX(-50%)scale(1);}50%{transform:translateX(-50%)scale(1.04);}100%{transform:translateX(-50%)scale(1);}}
 
-h1{color:#4B3621;font-size:2.5rem;margin:18px 0 6px;}  /* Dark brown */
-h2{color:#5A4634;font-weight:500;margin:0 0 18px;}   /* Medium brown */
 
+  h1{color:var(--brown);font-size:2.5rem;margin:18px 0 6px;}
+  h2{color:var(--brown);font-weight:500;margin:0 0 18px;}
   p.lead{max-width:900px;margin:0 auto 12px;color:#555;font-size:1.05rem;}
   main{padding:24px 16px 80px;text-align:center;}
- .btn{display:inline-block;margin-top:18px;padding:12px 22px;background:#8ab1d1;color:#2b2b2b;text-decoration:none;border-radius:10px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,0.06);transition:transform .18s,background .18s;}
-.btn:hover{transform:translateY(-3px);background:#77a2c0;color:#111;}
 
-  ul.services{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px;}
-  .card{position:relative;overflow:hidden;border-radius:12px;padding:18px;box-shadow:0 8px 22px rgba(0,0,0,0.06);text-align:left;background:#fff;transition:transform .25s ease,box-shadow .25s ease;}
+  .btn{
+    display:inline-block;margin-top:18px;padding:12px 22px;
+    background:#8ab1d1;color:#2b2b2b;text-decoration:none;
+    border-radius:10px;font-weight:600;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    transition:transform .18s,background .18s;
+  }
+  .btn:hover{transform:translateY(-3px);background:#77a2c0;color:#111;}
+
+  ul.services{
+    list-style:none;padding:0;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;margin-top:18px;
+  }
+
+  .card{
+    position:relative;overflow:hidden;border-radius:12px;
+    padding:18px;background:#fff;
+    box-shadow:0 8px 22px rgba(0,0,0,0.06);
+    text-align:left;
+    transition:transform .25s ease,box-shadow .25s ease;
+  }
   .card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,0.1);}
-  .card h3{color:var(--blue);margin:0.2 0 8px;}
+  .card h3{color:var(--brown);margin:0 0 8px;}
   .card p{color:#444;font-size:0.92rem;margin:0;}
 
-  form{text-align:left;background:#fff;padding:20px;border-radius:10px;box-shadow:0 10px 25px rgba(0,0,0,0.06);}
+  form{
+    text-align:left;background:#fff;padding:20px;border-radius:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+  }
   input,textarea{width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #e6e6e6;font-family:inherit;}
   label{font-weight:600;font-size:0.92rem;color:#444;}
   footer{padding:40px 16px;color:var(--soft);text-align:center;font-size:0.95rem;}
 
-  /* 🌫️ Popup success animation */
+
+  /* Popup success */
   #success-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
+    position: fixed;top: 50%;left: 50%;
     transform: translate(-50%, -50%) scale(0.8);
     background: rgba(255,255,255,0.75);
     backdrop-filter: blur(18px);
@@ -96,28 +119,18 @@ h2{color:#5A4634;font-weight:500;margin:0 0 18px;}   /* Medium brown */
     box-shadow: 0 0 50px rgba(167,199,231,0.5);
     text-align: center;
     color: #333;
-    opacity: 0;
-    z-index: 9999;
+    opacity: 0;z-index: 9999;
     transition: all 0.5s ease;
   }
-  #success-popup.active {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
+  #success-popup.active {opacity: 1;transform: translate(-50%, -50%) scale(1);}
   #success-popup::before {
-    content: "";
-    position: absolute;
-    inset: -20px;
+    content: "";position: absolute;inset: -20px;
     background: radial-gradient(circle, rgba(167,199,231,0.3), transparent 70%);
-    filter: blur(20px);
-    z-index: -1;
+    filter: blur(20px);z-index: -1;
   }
   #success-popup svg {
-    width: 50px;
-    height: 50px;
-    fill: var(--blue);
-    margin-bottom: 12px;
-    filter: drop-shadow(0 0 8px rgba(167,199,231,0.5));
+    width: 50px;height: 50px;fill: var(--blue);
+    margin-bottom: 12px;filter: drop-shadow(0 0 8px rgba(167,199,231,0.5));
   }
 
   .fade{opacity:0;transform:translateY(8px);animation:fadeIn .8s forwards;}
@@ -141,137 +154,43 @@ h2{color:#5A4634;font-weight:500;margin:0 0 18px;}   /* Medium brown */
   </div>
   <h1 class="fade delay">Tiny Team Digital Studio</h1>
   <h2 class="fade delay">Tiny team. Big results.</h2>
-  <p class="lead fade delay">A small creative studio with global digital impact. Funnels • Automation • YouTube Systems • Digital Products</p>
-  <a class="btn fade delay" href="#contact">Contact Us</a>
+  <p class="lead fade delay">We craft smart, modern digital systems — from funnels and automation to YouTube growth — helping you scale effortlessly with style and strategy.</p>
+  <a class="btn fade delay" href="#contact">Start a Project</a>
 </header>
 
 <main>
+
+  <!-- 🧱 Services Section -->
   <section class="fade" style="animation-delay:0.18s;">
-    <h2 style="color:var(--blue);margin-bottom:14px;">Our Services</h2>
-    <p style="color:#666;margin-bottom:16px;">We combine design, funnels, and automation to help small teams scale with clarity.</p>
+    <h2 style="color:var(--brown);margin-bottom:14px;">What We Do Best</h2>
+    <p style="color:#666;margin-bottom:16px;">Transforming your ideas into digital experiences that work, wow, and win.</p>
+
     <ul class="services">
-      <ul class="services">
-  <li><div class="card">
-    <img src="funnel.jpg" alt="Funnel Design" style="width:100%;border-radius:10px;margin-bottom:10px;">
-    <h3>Funnel Design & Automation</h3>
-    <p>High-converting funnel blueprints and automated systems.</p>
-  </div></li>
+      <li><div class="card">
+        <img src="funnel.jpg" alt="Funnel Design" style="width:100%;border-radius:10px;margin-bottom:10px;">
+        <h3>Funnel Design & Automation</h3>
+        <p>From clicks to conversions — we build funnels that automate your growth and free your time.</p>
+      </div></li>
 
-  <li><div class="card">
-    <img src="brand.jpg" alt="Brand Identity" style="width:100%;border-radius:10px;margin-bottom:10px;">
-    <h3>Brand & Digital Identity</h3>
-    <p>Minimal, modern identity and visual systems.</p>
-  </div></li>
+      <li><div class="card">
+        <img src="brand.jpg" alt="Brand Identity" style="width:100%;border-radius:10px;margin-bottom:10px;">
+        <h3>Brand & Digital Identity</h3>
+        <p>Design that defines you. We craft visual stories that your audience remembers and trusts.</p>
+      </div></li>
 
-  <li><div class="card">
-    <img src="workflow1.jpg" alt="Workflow Optimization" style="width:98%;border-radius:10px;margin-bottom:10px;">
-    <h3>Workflow Optimization</h3>
-    <p>Save time with clean systems that actually work for small teams.</p>
-  </div></li>
+      <li><div class="card">
+        <img src="workflow1.jpg" alt="Workflow Optimization" style="width:98%;border-radius:10px;margin-bottom:10px;">
+        <h3>Workflow Optimization</h3>
+        <p>Streamline your process with automations that make your business run smoother than ever.</p>
+      </div></li>
 
-  <li><div class="card">
-    <img src="youtube.jpg" alt="Faceless YouTube" style="width:100%;border-radius:10px;margin-bottom:10px;">
-    <h3>Faceless YouTube Systems</h3>
-    <p>From content workflow to publishing strategy and thumbnail assets.</p>
-  </div></li>
-</ul>
-
+      <li><div class="card">
+        <img src="youtube.jpg" alt="Faceless YouTube Systems" style="width:100%;border-radius:10px;margin-bottom:10px;">
+        <h3>Faceless YouTube Systems</h3>
+        <p>Grow on autopilot. We design faceless video systems that boost engagement and brand visibility.</p>
+      </div></li>
+    </ul>
   </section>
 
-  <section id="contact" class="fade" style="animation-delay:0.22s;">
-    <h2 style="color:var(--blue);margin-bottom:8px;">Let's Connect</h2>
-    <p style="color:#666;margin-bottom:16px;">Have a project or collaboration in mind? Send a quick message below.</p>
-
-    <form id="contactForm" style="max-width:620px;margin:0 auto;">
-      <label for="name">Name</label>
-      <input id="name" name="name" required placeholder="Your name">
-
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" required placeholder="you@example.com">
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
-
-      <button type="submit" class="btn" style="width:100%;">Send Message</button>
-      <p id="form-status" style="color:#777;margin-top:10px;"></p>
-    </form>
-
-    <p style="color:#777;margin-top:12px;">Or email directly: <a href="mailto:smallsteps@tinyteamstudio.online" style="color:var(--blue);">smallsteps@tinyteamstudio.online</a></p>
-  </section>
-</main>
-
-<footer class="fade" style="animation-delay:0.28s;">
-  © 2025 Tiny Team Digital Studio • Designed by Luzien Joseph
-</footer>
-
-<!-- Floating glow popup -->
-<div id="success-popup">
-  <svg viewBox="0 0 24 24"><path d="M9 16.17l-3.88-3.88L4 13.41l5 5 10-10-1.41-1.41z"/></svg>
-  <h3>Message Sent!</h3>
-  <p>Thank you for reaching out 💙<br>We'll get back to you soon.</p>
-</div>
-
-<script>
-  const scriptURL = "https://script.google.com/macros/s/AKfycbwZo_FPWpCsOq4uRqMlSDV68kY2JKgN79NO9RyOkZQ-Z4r93oD7rSxG9xmdk_avS6M4/exec";
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('form-status');
-  const popup = document.getElementById('success-popup');
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    status.innerHTML = "⏳ Sending message...";
-    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-      .then(response => {
-        if (response.ok) {
-          status.innerHTML = "";
-          popup.classList.add('active');
-          form.reset();
-          setTimeout(()=> popup.classList.remove('active'), 3200);
-        } else throw new Error('Network response was not ok.');
-      })
-      .catch(error => {
-        console.error('Error!', error.message);
-        status.innerHTML = "❌ Something went wrong. Please try again later.";
-      });
-  });
-
-  // Fade animations
-  document.addEventListener('DOMContentLoaded', ()=> {
-    document.querySelectorAll('.fade').forEach(el=> el.style.animationFillMode='forwards');
-  });
-
-  // Audio toggle
-  const audio = document.getElementById('ambient');
-  const toggle = document.getElementById('audioToggle');
-  let playing = false;
-  audio.volume = 0; audio.muted = true;
-
-  function fadeAudio(targetVol, duration=600){
-    const start = audio.volume;
-    const diff = targetVol - start;
-    const startTime = performance.now();
-    function step(now){
-      const t = Math.min(1,(now-startTime)/duration);
-      audio.volume = start + diff * t;
-      if(t<1) requestAnimationFrame(step);
-      else { if(audio.volume===0) audio.pause(); }
-    }
-    if(!audio.paused && targetVol===0){requestAnimationFrame(step);}
-    else { if(audio.paused) audio.play().catch(()=>{}); requestAnimationFrame(step);}
-  }
-
-  toggle.addEventListener('click', ()=>{
-    if(!playing){
-      audio.muted=false;fadeAudio(0.28,700);
-      toggle.title="Pause ambient";toggle.style.boxShadow="0 10px 30px rgba(167,199,231,0.28)";playing=true;
-    } else {
-      fadeAudio(0,700);
-      toggle.title="Play ambient";toggle.style.boxShadow="0 8px 20px rgba(167,199,231,0.18)";playing=false;
-    }
-  });
-</script>
-
-</body>
-</html>
-<!-- trigger redeploy -->
-<!-- redeploy include workflow1 -->
+  <!-- 💌 Contact Section -->
+  <section id="contact" clas
