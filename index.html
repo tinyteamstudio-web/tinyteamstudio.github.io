@@ -59,6 +59,7 @@
   .logo-wrap img{width:100%;height:100%;border-radius:50%;border:2px solid rgba(255,255,255,0.8);}
   @keyframes glowSoft{from{opacity:0.7;transform:scale(1);}to{opacity:1;transform:scale(1.08);}}
 
+
   .glow {
     position:absolute;left:50%;top:64px;transform:translateX(-50%);
     width:220px;height:220px;border-radius:50%;filter:blur(34px);z-index:-1;
@@ -106,7 +107,6 @@
   input,textarea{width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #e6e6e6;font-family:inherit;}
   label{font-weight:600;font-size:0.92rem;color:#444;}
   footer{padding:40px 16px;color:var(--soft);text-align:center;font-size:0.95rem;}
-
 
   /* Popup success */
   #success-popup {
@@ -193,35 +193,37 @@
   </section>
 
   <!-- 💌 Contact Section -->
-<section id="contact" class="fade" style="animation-delay:0.22s;">
-  <h2 style="color:var(--brown);margin-bottom:8px;">Let’s Build Something Amazing Together</h2>
-  <p style="color:#666;margin-bottom:16px;">
-    We’d love to collaborate! Whether it’s design, automation, or a creative system —
-    drop a message below and let’s make it happen.
-  </p>
+  <section id="contact" class="fade" style="animation-delay:0.22s;">
+    <h2 style="color:var(--brown);margin-bottom:8px;">Let’s Build Something Amazing Together</h2>
+    <p style="color:#666;margin-bottom:16px;">
+      We’d love to collaborate! Whether it’s design, automation, or a creative system —
+      drop a message below and let’s make it happen.
+    </p>
 
-  <form id="contactForm" style="max-width:620px;margin:0 auto;background:#fff;padding:20px;border-radius:10px;box-shadow:0 10px 25px rgba(0,0,0,0.06);">
-    <label for="name">Name</label>
-    <input id="name" name="name" required placeholder="Your name">
+    <form id="contactForm" style="max-width:620px;margin:0 auto;background:#fff;padding:20px;border-radius:10px;box-shadow:0 10px 25px rgba(0,0,0,0.06);">
+      <label for="name">Name</label>
+      <input id="name" name="name" required placeholder="Your name">
 
-    <label for="email">Email</label>
-    <input id="email" name="email" type="email" required placeholder="you@example.com">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required placeholder="you@example.com">
 
-    <label for="message">Message</label>
-    <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project..."></textarea>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project..."></textarea>
 
-    <button type="submit" class="btn" style="width:100%;">Send Message</button>
-    <p id="form-status" style="color:#777;margin-top:10px;"></p>
-  </form>
+      <button type="submit" class="btn" style="width:100%;">Send Message</button>
+      <p id="form-status" style="color:#777;margin-top:10px;"></p>
+    </form>
 
-  <p style="color:#777;margin-top:12px;">
-    Or email us directly:
-    <a href="mailto:hello@tinyteamdigitalstudio.com" style="color:var(--brown);font-weight:600;">
-      hello@tinyteamdigitalstudio.com
-    </a>
-  </p>
-</section>
+    <p style="color:#777;margin-top:12px;">
+      Or email us directly:
+      <a href="mailto:hello@tinyteamdigitalstudio.com" style="color:var(--brown);font-weight:600;">
+        hello@tinyteamdigitalstudio.com
+      </a>
+    </p>
+  </section>
+
 </main>
+
 <footer class="fade" style="animation-delay:0.28s;">
   © 2025 Tiny Team Digital Studio • Designed by Luzien Joseph
 </footer>
@@ -233,7 +235,7 @@
   <p>Thank you for reaching out 💙<br>We'll get back to you soon.</p>
 </div>
 
-  <script>
+<script>
   const scriptURL = "https://script.google.com/macros/s/AKfycbwZo_FPWpCsOq4uRqMlSDV68kY2JKgN79NO9RyOkZQ-Z4r93oD7rSxG9xmdk_avS6M4/exec";
   const form = document.getElementById('contactForm');
   const status = document.getElementById('form-status');
@@ -258,5 +260,5 @@
   });
 </script>
 
-
-
+</body>
+</html>
