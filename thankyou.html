@@ -3,16 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thank You • Tiny Team Studio</title>
+<title>Thank You • Tiny Team Digital Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --blue:#A7C7E7;
+    --brown:#4E342E;
     --cream:#F9F6EE;
     --soft:#BDBDBD;
     --text:#333;
+    --accent:#A7C7E7;
   }
+
   *{box-sizing:border-box}
   body{
     margin:0;
@@ -39,9 +41,9 @@
     animation: drift 14s ease-in-out infinite;
     transform-origin:center;
   }
-  .blob.a{width:520px;height:420px;background:linear-gradient(120deg,#A7C7E7 0%, #DCC29E 60%); top:-60px; left:-100px;}
-  .blob.b{width:420px;height:360px;background:linear-gradient(120deg,#C6F0E1 0%, #A7C7E7 60%); bottom:-80px; right:-120px; animation-delay:3s;}
-  .blob.c{width:360px;height:300px;background:linear-gradient(120deg,#F2D4E6 0%, #A7C7E7 60%); top:10%; right:10%; animation-delay:6s;}
+  .blob.a{width:520px;height:420px;background:linear-gradient(120deg,#DCC29E 0%, #A7C7E7 60%); top:-60px; left:-100px;}
+  .blob.b{width:420px;height:360px;background:linear-gradient(120deg,#E8D6C0 0%, #A7C7E7 60%); bottom:-80px; right:-120px; animation-delay:3s;}
+  .blob.c{width:360px;height:300px;background:linear-gradient(120deg,#F2D4E6 0%, #DCC29E 60%); top:10%; right:10%; animation-delay:6s;}
   @keyframes drift{
     0%{ transform: translateY(0) scale(1) rotate(0deg); }
     50%{ transform: translateY(-30px) scale(1.03) rotate(6deg); }
@@ -71,7 +73,7 @@
     backdrop-filter: blur(18px);
     border-radius: 20px;
     padding: 48px 60px;
-    box-shadow: 0 0 50px rgba(167,199,231,0.5);
+    box-shadow: 0 0 50px rgba(78,52,46,0.1);
     max-width: 480px;
     width: 90%;
     animation: fadeInUp .8s ease forwards;
@@ -87,26 +89,26 @@
   .box svg {
     width: 70px;
     height: 70px;
-    fill: var(--blue);
-    filter: drop-shadow(0 0 8px rgba(167,199,231,0.5));
+    fill: var(--brown);
+    filter: drop-shadow(0 0 6px rgba(78,52,46,0.2));
     margin-bottom: 16px;
   }
 
-  h1 { color: var(--blue); font-size: 1.9rem; margin-bottom: 12px; }
+  h1 { color: var(--brown); font-size: 2rem; margin-bottom: 12px; font-weight:700; }
   p { color: #555; margin-bottom: 24px; font-size: 1rem; }
 
   a.btn {
     display:inline-block;
-    background:var(--blue);
+    background:var(--brown);
     color:#fff;
     text-decoration:none;
     padding:12px 26px;
     border-radius:10px;
     font-weight:600;
-    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    box-shadow:0 6px 18px rgba(78,52,46,0.18);
     transition:transform .18s,background .18s;
   }
-  a.btn:hover{transform:translateY(-3px);background:#8ab1d1;}
+  a.btn:hover{transform:translateY(-3px);background:#3E2723;}
 
   footer {
     position: absolute;
@@ -138,12 +140,12 @@
 <div class="box">
   <svg viewBox="0 0 24 24"><path d="M9 16.17l-3.88-3.88L4 13.41l5 5 10-10-1.41-1.41z"/></svg>
   <h1>Thank You!</h1>
-  <p>Your message has been sent successfully.<br>We’ll be in touch very soon 💙</p>
+  <p>Your message is now with our tiny team 💌<br>We’ll get back to you shortly with something amazing.</p>
   <a href="index.html" class="btn">Back to Home</a>
   <p class="note">You’ll be redirected automatically in <span id="countdown">5</span> seconds...</p>
 </div>
 
-<footer>© 2025 Tiny Team Studio • Designed by Luzien Joseph</footer>
+<footer>© 2025 Tiny Team Digital Studio • Designed by Luzien Joseph</footer>
 
 <script>
   let timeLeft = 5;
