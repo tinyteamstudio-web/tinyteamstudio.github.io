@@ -64,12 +64,13 @@
   }
   @keyframes glowPulse{0%{transform:translateX(-50%)scale(1);}50%{transform:translateX(-50%)scale(1.04);}100%{transform:translateX(-50%)scale(1);}}
 
-  h1{color:var(--blue);font-size:2.5rem;margin:18px 0 6px;}
-  h2{color:var(--soft);font-weight:400;margin:0 0 18px;}
+h1{color:#4B3621;font-size:2.5rem;margin:18px 0 6px;}  /* Dark brown */
+h2{color:#5A4634;font-weight:500;margin:0 0 18px;}   /* Medium brown */
+
   p.lead{max-width:900px;margin:0 auto 12px;color:#555;font-size:1.05rem;}
   main{padding:24px 16px 80px;text-align:center;}
-  .btn{display:inline-block;margin-top:18px;padding:12px 22px;background:var(--blue);color:#fff;text-decoration:none;border-radius:10px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,0.06);transition:transform .18s,background .18s;}
-  .btn:hover{transform:translateY(-3px);background:#8ab1d1;}
+ .btn{display:inline-block;margin-top:18px;padding:12px 22px;background:#8ab1d1;color:#2b2b2b;text-decoration:none;border-radius:10px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,0.06);transition:transform .18s,background .18s;}
+.btn:hover{transform:translateY(-3px);background:#77a2c0;color:#111;}
 
   ul.services{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px;}
   .card{position:relative;overflow:hidden;border-radius:12px;padding:18px;box-shadow:0 8px 22px rgba(0,0,0,0.06);text-align:left;background:#fff;transition:transform .25s ease,box-shadow .25s ease;}
@@ -149,11 +150,32 @@
     <h2 style="color:var(--blue);margin-bottom:14px;">Our Services</h2>
     <p style="color:#666;margin-bottom:16px;">We combine design, funnels, and automation to help small teams scale with clarity.</p>
     <ul class="services">
-      <li><div class="card"><h3>Funnel Design & Automation</h3><p>High-converting funnel blueprints and automated systems.</p></div></li>
-      <li><div class="card"><h3>Brand & Digital Identity</h3><p>Minimal, modern identity and visual systems.</p></div></li>
-      <li><div class="card"><h3>Workflow Optimization</h3><p>Save time with clean systems that actually work for small teams.</p></div></li>
-      <li><div class="card"><h3>Faceless YouTube Systems</h3><p>From content workflow to publishing strategy and thumbnail assets.</p></div></li>
-    </ul>
+      <ul class="services">
+  <li><div class="card">
+    <img src="funnel.jpg" alt="Funnel Design" style="width:100%;border-radius:10px;margin-bottom:10px;">
+    <h3>Funnel Design & Automation</h3>
+    <p>High-converting funnel blueprints and automated systems.</p>
+  </div></li>
+
+  <li><div class="card">
+    <img src="brand.jpg" alt="Brand Identity" style="width:100%;border-radius:10px;margin-bottom:10px;">
+    <h3>Brand & Digital Identity</h3>
+    <p>Minimal, modern identity and visual systems.</p>
+  </div></li>
+
+  <li><div class="card">
+    <img src="workflow.jpg" alt="Workflow Optimization" style="width:100%;border-radius:10px;margin-bottom:10px;">
+    <h3>Workflow Optimization</h3>
+    <p>Save time with clean systems that actually work for small teams.</p>
+  </div></li>
+
+  <li><div class="card">
+    <img src="youtube.jpg" alt="Faceless YouTube" style="width:100%;border-radius:10px;margin-bottom:10px;">
+    <h3>Faceless YouTube Systems</h3>
+    <p>From content workflow to publishing strategy and thumbnail assets.</p>
+  </div></li>
+</ul>
+
   </section>
 
   <section id="contact" class="fade" style="animation-delay:0.22s;">
