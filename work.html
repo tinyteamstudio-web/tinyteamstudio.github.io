@@ -6,10 +6,17 @@
   <title>Our Work | Tiny Team Studio</title>
 
   <style>
+    :root {
+      --blue: #A7C7E7;
+      --cream: #F9F6EE;
+      --brown: #4B3621;
+      --soft-brown: #5A4634;
+    }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #F9F6EE;
+      background-color: var(--cream);
       color: #333;
       line-height: 1.6;
       overflow-x: hidden;
@@ -21,7 +28,7 @@
     }
 
     h1 {
-      color: #A7C7E7;
+      color: var(--brown);
       font-size: 2.7em;
       margin-bottom: 10px;
       letter-spacing: -0.5px;
@@ -44,7 +51,7 @@
     }
 
     .card {
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.9);
       border-radius: 14px;
       box-shadow: 0 6px 16px rgba(0,0,0,0.05);
       padding: 30px 20px;
@@ -67,7 +74,7 @@
     }
 
     .card h3 {
-      color: #93B9E0;
+      color: var(--blue);
       margin-bottom: 12px;
       font-size: 1.2em;
     }
@@ -81,16 +88,18 @@
       display: inline-block;
       margin: 50px auto 0;
       padding: 12px 28px;
-      background-color: #A7C7E7;
-      color: #fff;
+      background-color: var(--blue);
+      color: var(--brown);
       text-decoration: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-weight: 600;
       transition: 0.3s;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
 
     a.btn:hover {
       background-color: #8ab1d1;
+      color: #2b2b2b;
     }
 
     footer {
@@ -168,7 +177,7 @@
     }
 
     .modal-close:hover {
-      color: #A7C7E7;
+      color: var(--blue);
     }
 
     /* Arrows */
@@ -193,6 +202,12 @@
 
     .arrow.left { left: 20px; }
     .arrow.right { right: 20px; }
+
+    /* Hide audio elements (from index) */
+    #audioToggle, .audio-toggle, audio {
+      display: none !important;
+      visibility: hidden !important;
+    }
   </style>
 </head>
 <body>
@@ -235,9 +250,7 @@
     <div class="arrow left">❮</div>
     <div class="arrow right">❯</div>
     <div class="modal-content">
-      <img src="samples/funnel1.jpg" class="gallery-image active" alt="Funnel sample 1">
-      <img src="samples/funnel2.jpg" class="gallery-image" alt="Funnel sample 2">
-      <img src="samples/funnel3.jpg" class="gallery-image" alt="Funnel sample 3">
+      <img src="funnel.jpg" class="gallery-image active" alt="Funnel sample">
       <div class="caption">A complete funnel setup showcasing automation flow and lead sequence.</div>
     </div>
   </div>
@@ -247,9 +260,7 @@
     <div class="arrow left">❮</div>
     <div class="arrow right">❯</div>
     <div class="modal-content">
-      <img src="samples/brand1.jpg" class="gallery-image active" alt="Brand sample 1">
-      <img src="samples/brand2.jpg" class="gallery-image" alt="Brand sample 2">
-      <img src="samples/brand3.jpg" class="gallery-image" alt="Brand sample 3">
+      <img src="brand.jpg" class="gallery-image active" alt="Brand sample">
       <div class="caption">Clean identity system combining logo, typography, and color harmonies.</div>
     </div>
   </div>
@@ -259,86 +270,5 @@
     <div class="arrow left">❮</div>
     <div class="arrow right">❯</div>
     <div class="modal-content">
-      <img src="samples/workflow1.jpg" class="gallery-image active" alt="Workflow sample 1">
-      <img src="samples/workflow2.jpg" class="gallery-image" alt="Workflow sample 2">
-      <img src="samples/workflow3.jpg" class="gallery-image" alt="Workflow sample 3">
-      <div class="caption">Workflow dashboard sample demonstrating task automation and reporting.</div>
-    </div>
-  </div>
-
-  <div id="youtubeModal" class="modal">
-    <span class="modal-close">&times;</span>
-    <div class="arrow left">❮</div>
-    <div class="arrow right">❯</div>
-    <div class="modal-content">
-      <img src="samples/youtube1.jpg" class="gallery-image active" alt="YouTube sample 1">
-      <img src="samples/youtube2.jpg" class="gallery-image" alt="YouTube sample 2">
-      <img src="samples/youtube3.jpg" class="gallery-image" alt="YouTube sample 3">
-      <div class="caption">Faceless YouTube automation showing script, schedule, and upload workflow.</div>
-    </div>
-  </div>
-
-  <script>
-    // Reveal Cards
-    const cards = document.querySelectorAll('.card');
-    const reveal = () => {
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.85) card.classList.add('visible');
-      });
-    };
-    window.addEventListener('scroll', reveal);
-    reveal();
-
-    // Modal Functionality
-    const modals = document.querySelectorAll('.modal');
-    const closeBtns = document.querySelectorAll('.modal-close');
-    const arrows = document.querySelectorAll('.arrow');
-
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('click', () => {
-        const modalId = card.getAttribute('data-modal');
-        document.getElementById(modalId).classList.add('active');
-      });
-    });
-
-    closeBtns.forEach(btn => btn.addEventListener('click', () => modals.forEach(m => m.classList.remove('active'))));
-    window.addEventListener('click', e => modals.forEach(m => { if (e.target === m) m.classList.remove('active'); }));
-    window.addEventListener('keydown', e => { if (e.key === 'Escape') modals.forEach(m => m.classList.remove('active')); });
-
-    // Gallery navigation
-    arrows.forEach(arrow => {
-      arrow.addEventListener('click', () => {
-        const modal = arrow.closest('.modal');
-        const images = modal.querySelectorAll('.gallery-image');
-        let current = Array.from(images).findIndex(img => img.classList.contains('active'));
-        images[current].classList.remove('active');
-        if (arrow.classList.contains('left')) {
-          current = (current - 1 + images.length) % images.length;
-        } else {
-          current = (current + 1) % images.length;
-        }
-        images[current].classList.add('active');
-      });
-    });
-
-    // Keyboard arrow navigation
-    window.addEventListener('keydown', e => {
-      const activeModal = document.querySelector('.modal.active');
-      if (!activeModal) return;
-      const images = activeModal.querySelectorAll('.gallery-image');
-      let current = Array.from(images).findIndex(img => img.classList.contains('active'));
-      if (e.key === 'ArrowLeft') {
-        images[current].classList.remove('active');
-        current = (current - 1 + images.length) % images.length;
-        images[current].classList.add('active');
-      }
-      if (e.key === 'ArrowRight') {
-        images[current].classList.remove('active');
-        current = (current + 1) % images.length;
-        images[current].classList.add('active');
-      }
-    });
-  </script>
-</body>
-</html>
+      <img src="workflow.jpg" class="gallery-image active" alt="Workflow sample">
+      <div class="caption">Workflow da
