@@ -595,5 +595,28 @@
   })();
 </script>
 
+  <!-- 🟤 START: Project Modal -->
+<div id="projectModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-content" role="document">
+    <button class="close-btn" aria-label="Close modal">&times;</button>
+    <h2>Start a Project</h2>
+    <p>Tell us a bit about your project and we’ll walk you through.</p>
+    <form id="projectForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <select required>
+        <option value="">Select a Service</option>
+        <option>Funnel Design & Automation</option>
+        <option>Brand & Digital Identity</option>
+        <option>Workflow Optimization</option>
+        <option>Faceless YouTube Systems</option>
+      </select>
+      <textarea rows="4" placeholder="Tell us more..."></textarea>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </div>
+</div>
+<!-- 🟤 END: Project Modal -->
+
 </body>
 </html>
