@@ -117,6 +117,37 @@
   </div>
 </section>
 
+    <!-- 🧭 Walkthrough Modal -->
+<div id="walkModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-content" role="document" style="max-width:650px;">
+    <button class="close-btn" aria-label="Close walkthrough">&times;</button>
+    <h2 style="margin-top:0;">Funnel Walkthrough</h2>
+    <p style="color:#666;">Here’s a peek inside how your funnel works 👇</p>
+
+    <div style="text-align:left;color:#555;line-height:1.6;">
+      <div style="margin-bottom:20px;">
+        <img src="step1.jpg" alt="Landing Page step" style="width:100%;border-radius:10px;margin-bottom:8px;">
+        <strong>Step 1 – Landing Page:</strong> Visitors arrive on a clean, compelling page that highlights your offer and clear call-to-action.
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <img src="step2.jpg" alt="Automation step" style="width:100%;border-radius:10px;margin-bottom:8px;">
+        <strong>Step 2 – Automation:</strong> Once they click or fill in your form, your system sends confirmations and follow-ups automatically.
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <img src="step3.jpg" alt="Thank You step" style="width:100%;border-radius:10px;margin-bottom:8px;">
+        <strong>Step 3 – Thank You Page:</strong> Celebrate new leads and invite them to the next action — booking, payment, or joining your list.
+      </div>
+    </div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px;">
+      <a href="templates/funnel-template.zip" class="btn" download>⬇️ Get Free Template</a>
+      <a href="#contact" class="btn">Start My Project</a>
+    </div>
+  </div>
+</div>
+
     <section id="contact">
       <h2 style="color:var(--brown);margin-bottom:8px;">Let’s Build Something Amazing Together</h2>
       <p style="color:#666;margin-bottom:16px;">We’d love to collaborate! Drop a message below and let’s make it happen.</p>
@@ -170,5 +201,28 @@
       window.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('show'))closeModal();});
     })();
   </script>
+
+  <script>
+(function(){
+  const walkModal = document.getElementById('walkModal');
+  const openBtn = document.getElementById('openWalkthrough');
+  const closeBtn = walkModal.querySelector('.close-btn');
+
+  openBtn.addEventListener('click', () => {
+    walkModal.classList.add('show');
+    walkModal.setAttribute('aria-hidden','false');
+  });
+
+  const close = () => {
+    walkModal.classList.remove('show');
+    walkModal.setAttribute('aria-hidden','true');
+  };
+
+  closeBtn.addEventListener('click', close);
+  walkModal.addEventListener('click', e => { if(e.target === walkModal) close(); });
+  window.addEventListener('keydown', e => { if(e.key === 'Escape' && walkModal.classList.contains('show')) close(); });
+})();
+</script>
+
 </body>
 </html>
