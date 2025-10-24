@@ -153,12 +153,173 @@
       <h2 style="color:var(--brown);margin-bottom:14px;">What We Do Best</h2>
       <p style="color:#666;margin-bottom:16px;">Transforming your ideas into digital experiences that work, wow, and win.</p>
 
-      <ul class="services">
-        <li><div class="card"><img src="funnel.jpg" alt="Funnel Design" style="width:100%;border-radius:10px;margin-bottom:10px;"><h3>Funnel Design & Automation</h3><p>From clicks to conversions — we build funnels that automate your growth and free your time.</p></div></li>
-        <li><div class="card"><img src="brand.jpg" alt="Brand Identity" style="width:100%;border-radius:10px;margin-bottom:10px;"><h3>Brand & Digital Identity</h3><p>Design that defines you. We craft visual stories that your audience remembers and trusts.</p></div></li>
-        <li><div class="card"><img src="workflow1.jpg" alt="Workflow Optimization" style="width:98%;border-radius:10px;margin-bottom:10px;"><h3>Workflow Optimization</h3><p>Streamline your process with automations that make your business run smoother than ever.</p></div></li>
-        <li><div class="card"><img src="youtube.jpg" alt="Faceless YouTube Systems" style="width:100%;border-radius:10px;margin-bottom:10px;"><h3>Faceless YouTube Systems</h3><p>Grow on autopilot. We design faceless video systems that boost engagement and brand visibility.</p></div></li>
-      </ul>
+    <!-- ===========================
+     SERVICE CARDS + MODALS
+     =========================== -->
+<ul class="services">
+  <li>
+    <div class="card">
+      <img src="funnel.jpg" alt="Funnel Design" style="width:100%;border-radius:10px;margin-bottom:10px;">
+      <h3>Funnel Design & Automation</h3>
+      <p>From clicks to conversions — we build funnels that automate your growth and free your time.</p>
+      <button class="btn" data-open="#modal-funnel" style="margin-top:12px;">See inside</button>
+    </div>
+  </li>
+
+  <li>
+    <div class="card">
+      <img src="brand.jpg" alt="Brand Identity" style="width:100%;border-radius:10px;margin-bottom:10px;">
+      <h3>Brand & Digital Identity</h3>
+      <p>Design that defines you. We craft visual stories that your audience remembers and trusts.</p>
+      <button class="btn" data-open="#modal-brand" style="margin-top:12px;">See inside</button>
+    </div>
+  </li>
+
+  <li>
+    <div class="card">
+      <img src="workflow1.jpg" alt="Workflow Optimization" style="width:98%;border-radius:10px;margin-bottom:10px;">
+      <h3>Workflow Optimization</h3>
+      <p>Streamline your process with automations that make your business run smoother than ever.</p>
+      <button class="btn" data-open="#modal-workflow" style="margin-top:12px;">See inside</button>
+    </div>
+  </li>
+
+  <li>
+    <div class="card">
+      <img src="youtube.jpg" alt="Faceless YouTube Systems" style="width:100%;border-radius:10px;margin-bottom:10px;">
+      <h3>Faceless YouTube Systems</h3>
+      <p>Grow on autopilot. We design faceless video systems that boost engagement and brand visibility.</p>
+      <button class="btn" data-open="#modal-youtube" style="margin-top:12px;">See inside</button>
+    </div>
+  </li>
+</ul>
+
+<!-- ===== Service Modals ===== -->
+
+<!-- Funnel -->
+<div id="modal-funnel" class="modal-overlay" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="funnelTitle">
+    <button class="close-btn" aria-label="Close">&times;</button>
+    <h2 id="funnelTitle">Funnel Design & Automation</h2>
+    <p>Transform clicks into clients. See a simple lead journey in action.</p>
+
+    <img src="funnel.jpg" alt="Funnel preview" style="width:100%;border-radius:10px;margin:10px 0 14px;">
+
+    <ul style="margin:0 0 10px 18px;color:#555;line-height:1.6;">
+      <li>Landing → Offer → Form</li>
+      <li>Auto-confirmation email & follow-up</li>
+      <li>Booking/payment integration (optional)</li>
+    </ul>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a class="btn" href="#walkthrough">🚀 Walk Me Through</a>
+      <a class="btn" href="samples/funnel/" target="_blank">View Samples</a>
+      <a class="btn" href="templates/funnel-template.zip" download>⬇️ Free Funnel Template</a>
+    </div>
+  </div>
+</div>
+
+<!-- Brand -->
+<div id="modal-brand" class="modal-overlay" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="brandTitle">
+    <button class="close-btn" aria-label="Close">&times;</button>
+    <h2 id="brandTitle">Brand & Digital Identity</h2>
+    <p>Build a brand that feels human, credible, and memorable.</p>
+
+    <img src="brand.jpg" alt="Brand preview" style="width:100%;border-radius:10px;margin:10px 0 14px;">
+
+    <ul style="margin:0 0 10px 18px;color:#555;line-height:1.6;">
+      <li>Logo, color palette, and typography</li>
+      <li>Social + web consistency</li>
+      <li>Reusable Canva/Figma templates</li>
+    </ul>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a class="btn" href="samples/brand/" target="_blank">View Samples</a>
+      <a class="btn" href="templates/brand-board-template.png" target="_blank">Free Brand Board</a>
+    </div>
+  </div>
+</div>
+
+<!-- Workflow -->
+<div id="modal-workflow" class="modal-overlay" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="workflowTitle">
+    <button class="close-btn" aria-label="Close">&times;</button>
+    <h2 id="workflowTitle">Workflow Optimization</h2>
+    <p>Automate the busywork. Save hours each week with calm systems.</p>
+
+    <img src="workflow1.jpg" alt="Workflow preview" style="width:100%;border-radius:10px;margin:10px 0 14px;">
+
+    <ul style="margin:0 0 10px 18px;color:#555;line-height:1.6;">
+      <li>Google Sheets dashboards & reports</li>
+      <li>Auto-email & PDF exports</li>
+      <li>Trigger-based flows in GHL</li>
+    </ul>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a class="btn" href="samples/workflow/" target="_blank">View Samples</a>
+    </div>
+  </div>
+</div>
+
+<!-- YouTube -->
+<div id="modal-youtube" class="modal-overlay" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="youtubeTitle">
+    <button class="close-btn" aria-label="Close">&times;</button>
+    <h2 id="youtubeTitle">Faceless YouTube Systems</h2>
+    <p>Turn ideas into income — without showing your face.</p>
+
+    <img src="youtube.jpg" alt="YouTube system preview" style="width:100%;border-radius:10px;margin:10px 0 14px;">
+
+    <ul style="margin:0 0 10px 18px;color:#555;line-height:1.6;">
+      <li>AI voiceovers & stock editing workflow</li>
+      <li>Upload schedule & SEO templates</li>
+      <li>Monetization-ready niches</li>
+    </ul>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a class="btn" href="samples/youtube/" target="_blank">View Samples</a>
+      <a class="btn" href="templates/youtube-planner.xlsx" target="_blank">Free Channel Planner</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===========================
+     SEE IT IN ACTION (Walkthrough)
+     =========================== -->
+<section id="walkthrough" class="fade" style="animation-delay:0.2s;margin-top:44px;">
+  <h2 style="color:var(--brown);margin-bottom:10px;">See It in Action</h2>
+  <p style="color:#666;max-width:680px;margin:0 auto 24px;">
+    Experience how a funnel really works — from first click to automation.  
+    This short interactive demo shows how our templates bring your brand to life.
+  </p>
+
+  <div style="background:#fff;padding:28px;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.06);max-width:780px;margin:0 auto;">
+    <img src="funnel-demo.jpg" alt="Funnel preview" style="width:100%;border-radius:10px;margin-bottom:18px;">
+    <button id="openWalkthrough" class="btn">🚀 Walk Me Through (I’m Excited!)</button>
+  </div>
+</section>
+
+<!-- Walkthrough Modal -->
+<div id="walkModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-content" role="document" style="max-width:600px;">
+    <button class="close-btn" aria-label="Close walkthrough">&times;</button>
+    <h2>Funnel Walkthrough</h2>
+    <p style="color:#666;">Take a quick look at what happens inside our funnel system 👇</p>
+
+    <ol style="text-align:left;color:#555;line-height:1.6;font-size:0.95rem;margin-bottom:18px;">
+      <li><strong>Step 1:</strong> Visitor lands on your branded page — clear offer & call-to-action.</li>
+      <li><strong>Step 2:</strong> Automation triggers: confirmation email, booking, or follow-up.</li>
+      <li><strong>Step 3:</strong> Thank-you page celebrates your new lead — all done automatically!</li>
+    </ol>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a href="templates/funnel-template.zip" class="btn" download>⬇️ Get the Free Funnel Template</a>
+      <a href="#contact" class="btn">Start My Funnel</a>
+    </div>
+  </div>
+</div>
+
     </section>
 
     <!-- Original contact section (KEEPING your old Apps Script form) -->
@@ -373,6 +534,65 @@
   projectForm.addEventListener('submit', () => {
     setTimeout(() => closeModal(), 700);
   });
+</script>
+<script>
+  // Generic open/close for any modal-overlay via data-open="#id"
+  document.querySelectorAll('[data-open]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sel = btn.getAttribute('data-open');
+      const modal = document.querySelector(sel);
+      if (modal) {
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden','false');
+      }
+    });
+  });
+
+  document.querySelectorAll('.modal-overlay .close-btn').forEach(x => {
+    x.addEventListener('click', e => {
+      const modal = e.target.closest('.modal-overlay');
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden','true');
+    });
+  });
+
+  document.querySelectorAll('.modal-overlay').forEach(m => {
+    m.addEventListener('click', e => {
+      if (e.target === m) {
+        m.classList.remove('show');
+        m.setAttribute('aria-hidden','true');
+      }
+    });
+  });
+
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.show').forEach(m => {
+        m.classList.remove('show');
+        m.setAttribute('aria-hidden','true');
+      });
+    }
+  });
+
+  // Walkthrough open/close
+  (function(){
+    const walkModal = document.getElementById('walkModal');
+    const openWalkthrough = document.getElementById('openWalkthrough');
+    const closeWalkthrough = walkModal.querySelector('.close-btn');
+
+    openWalkthrough.addEventListener('click', () => {
+      walkModal.classList.add('show');
+      walkModal.setAttribute('aria-hidden','false');
+    });
+
+    const close = () => {
+      walkModal.classList.remove('show');
+      walkModal.setAttribute('aria-hidden','true');
+    };
+    closeWalkthrough.addEventListener('click', close);
+    walkModal.addEventListener('click', e => { if(e.target === walkModal) close(); });
+    window.addEventListener('keydown', e => { if(e.key === 'Escape' && walkModal.classList.contains('show')) close(); });
+  })();
 </script>
 
 </body>
