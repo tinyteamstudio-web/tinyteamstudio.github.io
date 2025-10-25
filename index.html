@@ -72,6 +72,25 @@
     .modal-content h2{margin:0 0 8px;font-size:1.5rem;}
     .modal-content p{margin:0 0 16px;color:#666;}
     .close-btn{position:absolute;right:16px;top:12px;font-size:22px;color:var(--brown);cursor:pointer;}
+
+    /* ✨ WALKTHROUGH MODAL ENHANCEMENTS ✨ */
+#walkModal.modal-overlay{
+  background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(6px);
+  transition:opacity 0.4s ease;
+}
+
+#walkModal .modal-content{
+  box-shadow:0 0 40px rgba(167,199,231,0.45);
+  animation:modalPop 0.4s ease;
+  background:#fffaf7; /* soft warm white to match your palette */
+}
+
+@keyframes modalPop{
+  0%{transform:translateY(40px) scale(0.95);opacity:0;}
+  100%{transform:translateY(0) scale(1);opacity:1;}
+}
+
   </style>
 </head>
 
