@@ -73,23 +73,49 @@
     .modal-content p{margin:0 0 16px;color:#666;}
     .close-btn{position:absolute;right:16px;top:12px;font-size:22px;color:var(--brown);cursor:pointer;}
 
-    /* ✨ WALKTHROUGH MODAL ENHANCEMENTS ✨ */
-#walkModal.modal-overlay{
-  background:rgba(0,0,0,0.55);
-  backdrop-filter:blur(6px);
-  transition:opacity 0.4s ease;
-}
+<style>
+  /* your other CSS above... */
 
-#walkModal .modal-content{
-  box-shadow:0 0 40px rgba(167,199,231,0.45);
-  animation:modalPop 0.4s ease;
-  background:#fffaf7; /* soft warm white to match your palette */
-}
+  /* ✨ WALKTHROUGH MODAL ENHANCEMENTS ✨ */
+  #walkModal.modal-overlay {
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(6px);
+    transition: opacity 0.4s ease;
+  }
 
-@keyframes modalPop{
-  0%{transform:translateY(40px) scale(0.95);opacity:0;}
-  100%{transform:translateY(0) scale(1);opacity:1;}
-}
+  #walkModal .modal-content {
+    box-shadow: 0 0 40px rgba(167,199,231,0.45);
+    animation: modalPop 0.4s ease;
+    background: #fffaf7;
+  }
+
+  @keyframes modalPop {
+    0% { transform: translateY(40px) scale(0.95); opacity: 0; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+  }
+
+  /* 🪄 SMOOTH STEP ANIMATIONS INSIDE WALKTHROUGH MODAL */
+  #walkModal .modal-content div[style*="margin-bottom:20px"] {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: stepFade 0.8s forwards;
+  }
+
+  #walkModal.show .modal-content div[style*="margin-bottom:20px"]:nth-child(1) {
+    animation-delay: 0.3s;
+  }
+  #walkModal.show .modal-content div[style*="margin-bottom:20px"]:nth-child(2) {
+    animation-delay: 0.6s;
+  }
+  #walkModal.show .modal-content div[style*="margin-bottom:20px"]:nth-child(3) {
+    animation-delay: 0.9s;
+  }
+
+  @keyframes stepFade {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
 
   </style>
 </head>
@@ -171,27 +197,6 @@
 <div id="walkModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
   ...
 </div>
-/* 🪄 SMOOTH STEP ANIMATIONS INSIDE WALKTHROUGH MODAL */
-#walkModal .modal-content div[style*="margin-bottom:20px"] {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: stepFade 0.8s forwards;
-}
-
-#walkModal.show .modal-content div[style*="margin-bottom:20px"]:nth-child(1) {
-  animation-delay: 0.3s;
-}
-#walkModal.show .modal-content div[style*="margin-bottom:20px"]:nth-child(2) {
-  animation-delay: 0.6s;
-}
-#walkModal.show .modal-content div[style*="margin-bottom:20px"]:nth-child(3) {
-  animation-delay: 0.9s;
-}
-
-@keyframes stepFade {
-  to { opacity: 1; transform: translateY(0); }
-}
-
 
     <section id="contact">
       <h2 style="color:var(--brown);margin-bottom:8px;">Let’s Build Something Amazing Together</h2>
